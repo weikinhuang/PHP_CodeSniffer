@@ -1,0 +1,15 @@
+<?php
+Phar::mapPhar('phpcs.phar');
+Phar::interceptFileFuncs();
+
+error_reporting(E_ALL | E_STRICT);
+
+include_once 'phar://phpcs.phar/CodeSniffer/CLI.php';
+
+$phpcs = new PHP_CodeSniffer_CLI();
+$phpcs->checkRequirements();
+
+$numErrors = $phpcs->process();
+exit($numErrors === 0 ? 0 : 1);
+
+__HALT_COMPILER();
