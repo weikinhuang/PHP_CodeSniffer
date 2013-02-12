@@ -2003,7 +2003,7 @@ class PHP_CodeSniffer
 
             // Might also be an actual ruleset file itself.
             // If it has an XML extension, let's at least try it.
-            if (is_file($standard) === true
+            if (is_file(realpath($standard)) === true
                 && substr(strtolower($standard), -4) === '.xml'
             ) {
                 return true;
